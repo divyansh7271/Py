@@ -1,0 +1,2 @@
+ i in arr:
+    #     pr
