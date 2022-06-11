@@ -1,4 +1,5 @@
 from cmath import log, sqrt
+import math
 import time
 import matplotlib.pyplot as plt
 import random
@@ -36,23 +37,23 @@ def mergesort(arr):
             j += 1
             k += 1
 
-def bubblesort(arr):
-    for i in range(0,len(arr)):
-        for j in range(i+1,len(arr)):
-            if arr[i] > arr[j]:
-                temp = arr[i]
-                arr[i] = arr[j]
-                arr[j] = temp            
+# def bubblesort(arr):
+#     for i in range(0,len(arr)):
+#         for j in range(i+1,len(arr)):
+#             if arr[i] > arr[j]:
+#                 temp = arr[i]
+#                 arr[i] = arr[j]
+#                 arr[j] = temp            
 
 if __name__ == '__main__': 
     arr = []
     exe_mer = []
     exe_bub = []
     c = []    
-    for j in range(0,11): 
+    for j in range(0,12): 
         
         with open('input.txt','w') as f:
-            for i in range(0,j*10):
+            for i in range(0,j*400):
                 f.write(str(random.randint(0,10000))) 
                 f.write("\n")
         
@@ -65,30 +66,31 @@ if __name__ == '__main__':
             arr.append(int(val)) 
             count += 1
         arr2 = arr 
-        st = time.perf_counter() 
-        bubblesort(arr2)
-        en = time.perf_counter()
+        # st = time.perf_counter_ns() 
+        # bubblesort(arr2)
+        # en = time.perf_counter_ns()
 
-        start = time.perf_counter()
+        start = time.perf_counter_ns()
         mergesort(arr)
-        end = time.perf_counter()
+        end = time.perf_counter_ns()
         
         c.append(count)
-        exe_mer.append(1000*(end - start))
-        exe_bub.append(1000*(en - st))
+        exe_mer.append((end - start))
+        # exe_bub.append((en - st))
 
     # for i in range(0,20):
     #     print(f"Count:{c[i]} ----> Execution Time:{exe[i]}")
      
     
-    # l = [x*x for x in c]
-    # plt.plot(c,l)
+    l = [(math.log2(x+1)*x)*1000 for x in c]
+    # bub = [(x*x)*15 for x in c]
+    plt.plot(c,l)
     plt.plot(c,exe_mer)
-    plt.plot(c,exe_bub)
+    # plt.plot(c,bub)
 
 
     plt.xlabel('No of inputs')
-    plt.ylabel('Time taken (in ms)')
-    plt.legend(["sec nlog(n)","nlog(n)","n^2"])
+    plt.ylabel('Time taken (in ns)')
+    plt.legend(["nlog(n)","Merge-Sort","n^2"])
     plt.title("Merge-Sort")
     plt.show()
