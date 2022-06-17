@@ -50,10 +50,10 @@ if __name__ == '__main__':
     exe_mer = []
     exe_bub = []
     c = []    
-    for j in range(0,12): 
+    for j in range(0,31): 
         
         with open('input.txt','w') as f:
-            for i in range(0,j*400):
+            for i in range(0,j*1000):
                 f.write(str(random.randint(0,10000))) 
                 f.write("\n")
         
@@ -82,8 +82,8 @@ if __name__ == '__main__':
     #     print(f"Count:{c[i]} ----> Execution Time:{exe[i]}")
      
     
-    l = [(math.log2(x+1)*x)*1000 for x in c]
-    # bub = [(x*x)*15 for x in c]
+    l = [(math.log2(x+1)*x)*3000 for x in c]
+    # bub = [(x*x)*10 for x in c]
     plt.plot(c,l)
     plt.plot(c,exe_mer)
     # plt.plot(c,bub)

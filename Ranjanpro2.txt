@@ -102,4 +102,4 @@ plt.xlabel('x - axis')
 plt.ylabel('y - axis')
 plt.title('Integer Multiplication')
 plt.legend()
-plt.show();
+plt.show()
