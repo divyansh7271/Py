@@ -44,12 +44,12 @@ def multiply(x, y):
     yR = yb[len_yL:] # Extracting the right most significant digits
 
     # Multiply xL and yL
-    mul = int(xL,2) * int(yL,2)
+    mul = multiply(int(xL,2),int(yL,2))
     P1 = bin(mul)
     P1 = P1[2:]
 
     # Multiply xR and yR
-    mul = int(xR,2) * int(yR,2)
+    mul = multiply(int(xR,2),int(yR,2))
     P2 = bin(mul)
     P2 = P2[2:]
 
