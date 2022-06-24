@@ -1,7 +1,6 @@
 import math
 import time
 import random
-from unittest import result
 import matplotlib.pyplot as plt
 from numpy import append
 MAXSIZE = 9000
