@@ -10,11 +10,11 @@ def multiply(x, y):
 
     # Convert x into it's binary form
     xb = bin(x)
-    xb = xb[2:] # Omit the prefix 0b
+    xb = xb[2:] 
 
     # Convert y into it's binary form
     yb = bin(y)
-    yb = yb[2:] # Eliminate the prefix 0b
+    yb = yb[2:] 
 
     len_y = len(yb)
     len_x = len(xb)
@@ -79,9 +79,7 @@ for i in range(0,MAXSIZE+1, STEPS):
     n.append(len(str(x)))
     executionTime = end - start
     et.append(executionTime)
-    # print("x, y, executionTime", x, y, executionTime)
     n2_x.append(len(str(x)))
-    # n2_y.append((i*i)/10)
     n2_y.append(i*i)
     n16_x.append(len(str(x)))
     n16_y.append(i**(1.6))
@@ -93,8 +91,8 @@ for i in range(0,MAXSIZE+1, STEPS):
 plt.plot(n, et, label="Integer Multiplication")
 # plt.plot(n2_x, n2_y, label="n^2")
 plt.plot(n16_x, n16_y, label="n^1.6")
-plt.xlabel('x - axis')
-plt.ylabel('y - axis')
+plt.xlabel('Size(n)')
+plt.ylabel('Time Taken')
 plt.title('Integer Multiplication')
 plt.legend()
 plt.show()

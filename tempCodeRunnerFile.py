@@ -1,2 +1,2 @@
-x for x in c]
-    # plt.plot(c,l)
+')
+plt.ylabel('Time Taken')
