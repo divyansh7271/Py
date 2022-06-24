@@ -60,7 +60,7 @@ for i in range(0,MAXSIZE+1, STEPS):
     # n2_x.append(len(x))
     # n2_y.append(i*i)
     n16_x.append(len(x))
-    n16_y.append((i**(1.6))*21000)
+    n16_y.append((i**(1.6))*22000)
 # print(n)
     # print(et)
 # # print(n2_y)
