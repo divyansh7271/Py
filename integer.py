@@ -4,8 +4,8 @@ import random
 from unittest import result
 import matplotlib.pyplot as plt
 from numpy import append
-MAXSIZE = 900
-STEPS = 90
+MAXSIZE = 9000
+STEPS = 900
 
 def fitlen(x, y):
     """ make x, y to become same length. 
