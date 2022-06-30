@@ -7,8 +7,6 @@ MAXSIZE = 9000
 STEPS = 900
 
 def fitlen(x, y):
-    """ make x, y to become same length. 
-    x and y are string, binary shape.  """
     m, n = len(x), len(y)
     if (m < n):
         x = '0' * (n - m) + x
@@ -24,8 +22,7 @@ def add(x, y):
 
 
 def multiply(x, y):
-        """ given x and y are string, binary values.
-        returns multiplied value as a integer. """
+
         x, y = fitlen(x, y)
         n = len(x)
         if n == 0: return 0
@@ -35,7 +32,6 @@ def multiply(x, y):
         xl, xr = x[:n // 2], x[n // 2:]
         yl, yr = y[:n // 2], y[n // 2:]
 
-        # each term is a integer.
         p1 = multiply(xl, yl)
         p2 = multiply(xr, yr)
         p3 = multiply(add(xl, xr), add(yl, yr))
@@ -43,8 +39,6 @@ def multiply(x, y):
 
 n = []
 et = []
-# n2_x = []
-# n2_y = []
 n16_x = []
 n16_y = []
 for i in range(0,MAXSIZE+1, STEPS):
@@ -56,17 +50,11 @@ for i in range(0,MAXSIZE+1, STEPS):
     n.append(len(x))
     executionTime = end - start
     et.append(executionTime)
-    # n2_x.append(len(x))
-    # n2_y.append(i*i)
     n16_x.append(len(x))
     n16_y.append((i**(1.6))*22000)
-# print(n)
-    # print(et)
-# # print(n2_y)
-# print(n16_y)
+
 
 plt.plot(n, et, label="Integer Multiplication")
-# plt.plot(n2_x, n2_y, label="n^2")
 plt.plot(n16_x, n16_y, label="n^1.6")
 plt.xlabel('Size(n)')
 plt.ylabel('Time Taken')
@@ -74,11 +62,5 @@ plt.title('Integer Multiplication')
 plt.legend()
 plt.show()    
 
-# x = int(input())
-# y = int(input())
 
-# x = str(bin(x))[2:]
-# y = str(bin(y))[2:]
-
-# print("Product of ",x,y," = ",multiply(x,y))
 

@@ -37,24 +37,15 @@ def mergesort(arr):
             j += 1
             k += 1
 
-# def bubblesort(arr):
-#     for i in range(0,len(arr)):
-#         for j in range(i+1,len(arr)):
-#             if arr[i] > arr[j]:
-#                 temp = arr[i]
-#                 arr[i] = arr[j]
-#                 arr[j] = temp            
-
 if __name__ == '__main__': 
     arr = []
     exe_mer = []
-    exe_bub = []
     c = []    
-    for j in range(0,31): 
+    for j in range(0,11): 
         
         with open('input.txt','w') as f:
-            for i in range(0,j*1000):
-                f.write(str(random.randint(0,1000000))) 
+            for i in range(0,j*800):
+                f.write(str(random.randint(i,1000*i))) 
                 f.write("\n")
         
         with open('input.txt','r') as f:
@@ -64,29 +55,19 @@ if __name__ == '__main__':
 
         for val in content:
             arr.append(int(val)) 
-            count += 1
-        arr2 = arr 
-        # st = time.perf_counter_ns() 
-        # bubblesort(arr2)
-        # en = time.perf_counter_ns()
-
+            count += 1 
+        
         start = time.perf_counter_ns()
         mergesort(arr)
         end = time.perf_counter_ns()
         
         c.append(count)
         exe_mer.append((end - start))
-        # exe_bub.append((en - st))
-
-    # for i in range(0,20):
-    #     print(f"Count:{c[i]} ----> Execution Time:{exe[i]}")
      
     
-    l = [(math.log2(x+1)*x)*3000 for x in c]
-    # bub = [(x*x)*10 for x in c]
+    l = [(math.log2(x+1)*x)*1300 for x in c]
     plt.plot(c,l)
     plt.plot(c,exe_mer)
-    # plt.plot(c,bub)
 
 
     plt.xlabel('No of inputs')
