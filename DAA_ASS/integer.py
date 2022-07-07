@@ -3,8 +3,8 @@ import time
 import random
 import matplotlib.pyplot as plt
 from numpy import append
-MAXSIZE = 9000
-STEPS = 900
+MAXSIZE = 1000
+STEPS = 100
 
 def fitlen(x, y):
     m, n = len(x), len(y)
@@ -40,6 +40,7 @@ def multiply(x, y):
 n = []
 et = []
 n16_x = []
+n15_y = []
 n16_y = []
 for i in range(0,MAXSIZE+1, STEPS):
     x = str(bin(random.randint(i, 10**i)))[2:]
@@ -52,10 +53,13 @@ for i in range(0,MAXSIZE+1, STEPS):
     et.append(executionTime)
     n16_x.append(len(x))
     n16_y.append((i**(1.6))*22000)
+    n15_y.append((i**(1.5))*22000)
 
 
 plt.plot(n, et, label="Integer Multiplication")
 plt.plot(n16_x, n16_y, label="n^1.6")
+plt.plot(n16_x, n15_y, label="n^1.5")
+
 plt.xlabel('Size(n)')
 plt.ylabel('Time Taken')
 plt.title('Integer Multiplication')

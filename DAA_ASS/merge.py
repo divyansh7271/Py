@@ -41,10 +41,10 @@ if __name__ == '__main__':
     arr = []
     exe_mer = []
     c = []    
-    for j in range(0,11): 
+    for j in range(0,21): 
         
         with open('input.txt','w') as f:
-            for i in range(0,j*800):
+            for i in range(0,j*5000):
                 f.write(str(random.randint(i,1000*i))) 
                 f.write("\n")
         
