@@ -78,7 +78,7 @@ if __name__ == '__main__':
     #     print(f"Count:{c[i]} ----> Execution Time:{exe[i]}")
      
     
-    l = [(math.log2(x+1)*x)*2600 for x in c]
+    l = [(math.log2(x+1)*x)*2200 for x in c]
     # bub = [(x*x)*10 for x in c]
     plt.plot(c,l)
     plt.plot(c,exe)
