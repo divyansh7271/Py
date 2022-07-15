@@ -45,9 +45,9 @@ n16_y = []
 for i in range(0,MAXSIZE+1, STEPS):
     x = str(bin(random.randint(i, 10**i)))[2:]
     y = str(bin(random.randint(i, 10**i)))[2:]
-    start = time.perf_counter_ns()
+    start = time.time_ns_ns()
     z = multiply(x, y)
-    end = time.perf_counter_ns()
+    end = time.time_ns_ns()
     n.append(len(x))
     executionTime = end - start
     et.append(executionTime)
