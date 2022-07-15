@@ -57,9 +57,9 @@ if __name__ == '__main__':
             arr.append(int(val)) 
             count += 1 
         
-        start = time.perf_counter_ns()
+        start = time.time_ns_ns()
         mergesort(arr)
-        end = time.perf_counter_ns()
+        end = time.time_ns_ns()
         
         c.append(count)
         exe_mer.append((end - start))

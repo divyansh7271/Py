@@ -62,13 +62,13 @@ if __name__ == '__main__':
             arr.append(int(val)) 
             count += 1
         arr2 = arr 
-        # st = time.perf_counter_ns() 
+        # st = time.time_ns_ns() 
         # bubblesort(arr2)
-        # en = time.perf_counter_ns()
+        # en = time.time_ns_ns()
 
-        start = time.perf_counter_ns()
+        start = time.time_ns_ns()
         heapSort(arr)
-        end = time.perf_counter_ns()
+        end = time.time_ns_ns()
         
         c.append(count)
         exe.append((end - start))
