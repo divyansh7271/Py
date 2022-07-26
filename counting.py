@@ -1,9 +1,14 @@
 
+import time
+import matplotlib.pyplot as plt
+import random
+
 def countingSort(array):
     size = len(array)
     output = [0] * size
-
-    count = [0] * 10
+    mx = max(array) + 1
+    count = [0] * mx
+    print(f"{mx} ->max and {size} ->size")
 
     for i in range(0, size):
         count[array[i]] += 1
@@ -24,14 +29,47 @@ def countingSort(array):
     for i in range(0, size):
         array[i] = output[i]
 
+if __name__ == '__main__': 
+    array = []
+    exe_mer = []
+    c = []    
+    for j in range(1,51): 
+        
+        with open('input.txt','w') as f:
+            for i in range(1,j*11):
+                f.write(str(random.randint(i,10*i))) 
+                f.write("\n")
+        
+        with open('input.txt','r') as f:
+            content = f.readlines()
+        
+        count = 0
 
-data = [4, 2, 2, 8, 3, 3, 1]
-countingSort(data)
-print("Sorted Array in Ascending Order: ")
-print(data)
+        for val in content:
+            array.append(int(val)) 
+            count += 1 
+        
+        start = time.time_ns()
+        countingSort(array)
+        end = time.time_ns()
+        
+        c.append(count)
+        exe_mer.append((end - start))
+     
+    
+    l = [x*4000 for x in c]
+    plt.plot(c,l)
+    plt.plot(c,exe_mer)
+    plt.xlabel('No of inputs')
+    plt.ylabel('Time taken (in ns)')
+    plt.legend(["n","Counting-sort"])
+    plt.title("Counting_sort")
+    plt.show()
 
 
-# 4 2 2 8 3 3 1          - array
-# 0 1 2 3 4 5 6 7 8 9 10 - index_of_count
-# 0 1 2 2 1 0 0 0 1 0 0  - count
-# 0 1 3 5 6 6 6 6 7 7 7  - cummulative count
+
+
+# data = [4, 2, 2, 8, 3, 3, 1]
+# countingSort(data)
+# print("Sorted Array in Ascending Order: ")
+# print(data)
