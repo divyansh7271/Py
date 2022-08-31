@@ -1,79 +1,47 @@
+class Item:
 
-from math import log2
-import random
-import matplotlib.pyplot as plt
-import time
-from math import log2
-def heapify(arr, n, i):
-    largest = i
+    def __init__(self,weight, value, index):
+        self.weight = weight
+        self.value = value
+        self.index = index
+        self.cost = value // weight
+    def __lt__(self, other):
+        return self.cost < other.cost
 
-    l = 2 * i + 1
-    r = 2 * i + 2
+class GreedyKnapsack:
 
-    if l < n and arr[l] > arr[largest]:
-        largest = l
-    else:
-        largest = i
+    @staticmethod
+    def knapsack(weight, value, capacity):
 
-    if r < n and arr[r] > arr[largest]:
-        largest = r
-    
-    if largest != i:
-        arr[i], arr[largest] = arr[largest], arr[i]
+        profit = 0
+        items = []
+        for i in range(len(weight)):
+            items.append(Item(weight[i], value[i], i))
 
-        heapify(arr, n , largest)
+        items.sort(reverse = True)
 
-def heapsort(arr):
+        for i in items:
+            wt = i.weight
+            val = i.value
 
-    n = len(arr)
+            if capacity - wt >= 0:
+                profit += val
+                capacity -= wt
 
-    start_index = n//2 - 1
+            else:
+                frac = capacity / wt
+                capacity = int(capacity - wt * frac)
+                profit += val * frac
+                break
+        
+        print("Total profit : ",profit)
 
-    for i in range(start_index, 0-1, -1):
-        heapify(arr, n, i)
 
-    for i in range(n-1, 0, -1):
-          # Swap
-          arr[i], arr[0] = arr[0], arr[i]
+weight = [10, 40, 20, 30]
+value = [60, 40, 100, 120]
+capacity = 50
 
-          heapify(arr, i, 0)
-    
-'''
-#Test
-array = [1, 3, 5, 4, 6, 13, 10, 9, 8, 15, 17]
+print('Weight : ',weight)
+print('Value : ',value)
 
-heapsort(array)
-
-print(array)
-'''
-
-arr = []
-ext = []
-s = []
-time_complexity = []
-
-for size in range(3000, 33000, 3000):
-
-    s.append(size)
-    arr = [x for x in range(1, size+1)]
-    random.shuffle(arr)
-
-    start = time.time_ns_ns()
-    heapsort(arr)
-    end = time.time_ns_ns()
-
-    total_time = end - start
-    ext.append(total_time)
-
-    tc = size * (log2(size))*340
-    time_complexity.append(tc)
-
-    # print('Sorted array: {}'.format(array))
-
-plt.plot(s, ext, label = "Heapsort")
-plt.plot(s, time_complexity, label = "nlogn")
-plt.xlabel("size")
-plt.ylabel("time")
-plt.title("Heapsort")
-plt.legend()
-plt.show()
+GreedyKnapsack.knapsack(weight, value, capacity)
